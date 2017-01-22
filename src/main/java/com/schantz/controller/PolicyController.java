@@ -18,13 +18,13 @@ public class PolicyController {
 		this.policyService = policyService;
 	}
 	
-	@GetMapping("/policy")
-	public List<Policy> getPolicies(@RequestParam String personRegistration) {
-		return policyService.getPolicies(personRegistration);
+	@GetMapping("/policies/{userId}")
+	public List<Policy> getPolicies(String userId) {
+		return policyService.getPolicies(userId);
 	}
 	
-	@GetMapping("/policy/{eventTransId}")
-	public Policy getPolicy(@PathVariable String eventTransId) {
-		return policyService.getPolicy(eventTransId);
+	@GetMapping("/policies/{userId}/{policyId}")
+	public Policy getPolicy(String userId, String policyId) {
+		return policyService.getPolicy(policyId);
 	}
 }

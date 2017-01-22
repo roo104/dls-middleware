@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="477de6d9-1c20-45c4-a17f-9c9fd180b952" activeEnvironment="Default" name="DLS middleware"
+                    resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL"
+                    xmlns:con="http://eviware.com/soapui/config">
+    <con:settings/>
+    <con:interface xsi:type="con:RestService" id="ad38baae-53cf-48d7-ae1f-3d40b5e398a7"
+                   wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache type="TEXT" rootPart=""/>
+        <con:endpoints>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+        </con:endpoints>
+        <con:resource name="Login" path="/login" id="2ce17488-2ebd-42aa-9db3-f874f79d76ad">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>socialSecurityNumber</con:name>
+                    <con:value>021166-0000</con:value>
+                    <con:style>QUERY</con:style>
+                    <con:default>021166-0000</con:default>
+                    <con:path xsi:nil="true"/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="Login" id="64e21285-9ea7-4b21-881c-5e5a480beff2" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:log="http://localhost/login">log:Response</con:element>
+                </con:representation>
+                <con:request name="Request 1" id="66838e31-18d1-4dc7-833f-d4954fb3b913" mediaType="application/json">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/login</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                    <con:parameterOrder>
+                        <con:entry>socialSecurityNumber</con:entry>
+                    </con:parameterOrder>
+                </con:request>
+            </con:method>
+        </con:resource>
+        <con:resource name="policies" path="/policies/{userId}" id="589f86e2-7ba5-4c4b-8ed2-5ca3a950f6f8">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>userId</con:name>
+                    <con:value/>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default/>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="Method 1" id="693b0932-8baf-44a9-ba6e-791884a29a15" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:request name="Request 1" id="6ecbffb0-f33b-4c41-ab68-5e1f007bcbd2" mediaType="application/json">
+                    <con:settings/>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                    <con:parameterOrder>
+                        <con:entry>userId</con:entry>
+                    </con:parameterOrder>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:testSuite id="785923aa-8de3-4300-9691-d093d1daaa0f" name="http://localhost:8080 TestSuite">
+        <con:description>TestSuite generated for REST Service [http://localhost:8080]</con:description>
+        <con:settings/>
+        <con:runType>SEQUENTIAL</con:runType>
+        <con:testCase id="7fd6dbd4-f2a8-46fb-a91d-9512715b8a8e" failOnError="true" failTestCaseOnErrors="true"
+                      keepSession="false" maxResults="0" name="Suite" searchProperties="true">
+            <con:description>TestCase generated for REST Resource [Login] located at [/login]</con:description>
+            <con:settings/>
+            <con:testStep type="restrequest" name="Login" id="e4455c8c-a0aa-43fe-838c-f17cc0752758">
+                <con:settings/>
+                <con:config service="http://localhost:8080" resourcePath="/login" methodName="Login"
+                            xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Login" id="66838e31-18d1-4dc7-833f-d4954fb3b913"
+                                     mediaType="application/json">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://localhost:8080</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://localhost/login</con:originalUri>
+                        <con:assertion type="Valid HTTP Status Codes" id="68f023a3-a395-4159-a4c4-ccd49dbc30d8"
+                                       name="Valid HTTP Status Codes">
+                            <con:configuration>
+                                <codes>200</codes>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>No Authorization</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters/>
+                        <con:parameterOrder>
+                            <con:entry>socialSecurityNumber</con:entry>
+                        </con:parameterOrder>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="transfer" name="Transfer userId" id="0a1ee4f6-c0fa-4b5f-b34d-c22a9168c4ac">
+                <con:settings/>
+                <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true"
+                                   ignoreEmpty="false" transferToAll="false" entitize="false"
+                                   transferChildNodes="false">
+                        <con:name>userId</con:name>
+                        <con:sourceType>Response</con:sourceType>
+                        <con:sourceStep>Login</con:sourceStep>
+                        <con:sourcePath>userId</con:sourcePath>
+                        <con:targetType>userId</con:targetType>
+                        <con:targetStep>Get policies</con:targetStep>
+                        <con:type>JSONPATH</con:type>
+                        <con:upgraded>true</con:upgraded>
+                    </con:transfers>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Get policies" id="3401550e-9505-4cac-922a-21a0d5104cad">
+                <con:settings/>
+                <con:config service="http://localhost:8080" resourcePath="/policies/{userId}" methodName="Method 1"
+                            xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Get policies" id="6ecbffb0-f33b-4c41-ab68-5e1f007bcbd2"
+                                     mediaType="application/json">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://localhost:8080</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://localhost/policies/%24Jb5WmZcGFri0gSVaUW</con:originalUri>
+                        <con:assertion type="Valid HTTP Status Codes" id="ff49cc63-6d30-4b0c-9a60-0d73fcd9f45e"
+                                       name="Valid HTTP Status Codes">
+                            <con:configuration>
+                                <codes>200</codes>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>No Authorization</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <entry key="userId" value="$Jb5WmZcGFri0gSVaUW" xmlns="http://eviware.com/soapui/config"/>
+                        </con:parameters>
+                        <con:parameterOrder>
+                            <con:entry>personId</con:entry>
+                        </con:parameterOrder>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:properties/>
+        </con:testCase>
+        <con:properties/>
+    </con:testSuite>
+    <con:properties/>
+    <con:wssContainer/>
+    <con:oAuth2ProfileContainer/>
+    <con:sensitiveInformation/>
+</con:soapui-project>

@@ -3,6 +3,7 @@
  */
 package com.schantz.controller;
 
+import com.schantz.model.*;
 import com.schantz.service.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class LoginController {
 	}
 	
 	@GetMapping("/login")
-	public String login(String username, String password) {
-		return loginService.login(username, password);
+	public Login login(String socialSecurityNumber, String password) {
+		return loginService.login(socialSecurityNumber, password);
 	}
 }

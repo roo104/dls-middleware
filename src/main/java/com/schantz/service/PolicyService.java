@@ -18,10 +18,12 @@ import org.springframework.web.reactive.function.client.*;
 public class PolicyService {
 	
 	@CacheResult(cacheName = "policy")
-	public List<Policy> getPolicies(String personRegistration) {
+	public List<Policy> getPolicies(String userId) {
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
 		
-		ClientRequest<Void> request = ClientRequest.GET(UrlParams.POLICY_SEARCH_URL, personRegistration)
+		// Lookup user to get personRegistration
+		
+		ClientRequest<Void> request = ClientRequest.GET(UrlParams.POLICY_SEARCH_URL, userId)
 				.build();
 		
 		PolicySearchQueryResult policies = client.exchange(request)
@@ -41,10 +43,10 @@ public class PolicyService {
 	}
 	
 	@CacheResult(cacheName = "policy")
-	public Policy getPolicy(String eventTransId) {
+	public Policy getPolicy(String policyId) {
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
 		
-		ClientRequest<Void> request = ClientRequest.GET(UrlParams.POLICY_URL, eventTransId)
+		ClientRequest<Void> request = ClientRequest.GET(UrlParams.POLICY_URL, policyId)
 				.build();
 		
 		BasicInfoPolicyQueryResult policyResult = client.exchange(request)
