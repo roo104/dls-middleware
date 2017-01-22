@@ -3,7 +3,6 @@
  */
 package com.schantz.controller;
 
-import com.schantz.remotecq.client.*;
 import com.schantz.service.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +17,6 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String login(String username, String password) {
-		LoginIdPairCommandResult login = loginService.login(username, password);
-		
-		return login.getIdentifierA().getSessionToken();
+		return loginService.login(username, password);
 	}
 }

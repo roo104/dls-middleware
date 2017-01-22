@@ -18,4 +18,11 @@ public class ExceptionHandling extends ResponseEntityExceptionHandler {
 		ErrorResponse responseBody = new ErrorResponse(HttpStatus.UNAUTHORIZED, exception.getMessage());
 		return new ResponseEntity<>(responseBody, HttpStatus.UNAUTHORIZED);
 	}
+	
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> con(HttpServletRequest req, Exception exception) {
+		ErrorResponse responseBody = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+		return new ResponseEntity<>(responseBody, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }

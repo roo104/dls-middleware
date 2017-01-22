@@ -12,14 +12,18 @@ public class Policy {
 	
 	private final String id;
 	private final LocalDate startDate;
-	private final String ownerId;
-	private final String insuredPersonId;
+	@Setter
+	private String ownerId;
+	@Setter
+	private String insuredPersonId;
+	@Setter
+	private String eventTransId;
+	@Setter
+	private String agreementId;
 	
-	public Policy(String id, LocalDate startDate, String ownerId, String insuredPersonId) {
+	public Policy(String id, LocalDate startDate) {
 		this.id = id;
 		this.startDate = startDate;
-		this.ownerId = ownerId;
-		this.insuredPersonId = insuredPersonId;
 	}
 	
 }
