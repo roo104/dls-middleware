@@ -22,11 +22,10 @@ public class LoginService {
 		
 		final String[] sessionId = new String[1];
 		
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		
 		ClientRequest<LoginCommand> loginRequest = ClientRequest.POST(UrlParams.LOGIN_URL)
 				.body(BodyInserters.fromObject(loginCommand));
 		
+		WebClient client = WebClient.create(new ReactorClientHttpConnector());
 		ClientRequest<Void> personRequest = ClientRequest.GET(UrlParams.PERSON_SEARCH_URL, socialSecurityNumber).build();
 		
 		PersonSearchQueryResult personSearchQueryResult = client.exchange(loginRequest)

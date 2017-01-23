@@ -65,6 +65,12 @@
             <con:method name="Method 1" id="693b0932-8baf-44a9-ba6e-791884a29a15" method="GET">
                 <con:settings/>
                 <con:parameters/>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>Response</con:element>
+                </con:representation>
                 <con:request name="Request 1" id="6ecbffb0-f33b-4c41-ab68-5e1f007bcbd2" mediaType="application/json">
                     <con:settings/>
                     <con:endpoint>http://localhost:8080</con:endpoint>
@@ -78,6 +84,52 @@
                     <con:parameterOrder>
                         <con:entry>userId</con:entry>
                     </con:parameterOrder>
+                </con:request>
+            </con:method>
+        </con:resource>
+        <con:resource name="{policyId}" path="/policies/{userId}/{policyId}" id="a027ef8f-50e8-4607-a601-a07762dc56e6">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>userId</con:name>
+                    <con:value>userId</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>userId</con:default>
+                </con:parameter>
+                <con:parameter>
+                    <con:name>policyId</con:name>
+                    <con:value>policyId</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>policyId</con:default>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="Method 1" id="c5459a8a-eb74-42ef-886c-7a223acbb357" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>500</con:status>
+                    <con:params/>
+                    <con:element xmlns:jb5="http://localhost/policies/userId/%24Jb5WmaAGaB%40njLpcRi">jb5:Fault
+                    </con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:jb5="http://localhost/policies/userId/%24Jb5WmaAGaB%40njLpcRi">jb5:Response
+                    </con:element>
+                </con:representation>
+                <con:request name="Request 1" id="24f72a95-e3e5-4dd6-a880-11de41a53e69" mediaType="application/json">
+                    <con:settings/>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
                 </con:request>
             </con:method>
         </con:resource>
@@ -135,6 +187,18 @@
                         <con:type>JSONPATH</con:type>
                         <con:upgraded>true</con:upgraded>
                     </con:transfers>
+                    <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true"
+                                   ignoreEmpty="false" transferToAll="false" entitize="false"
+                                   transferChildNodes="false">
+                        <con:name>userId2</con:name>
+                        <con:sourceType>Response</con:sourceType>
+                        <con:sourceStep>Login</con:sourceStep>
+                        <con:sourcePath>userId</con:sourcePath>
+                        <con:targetType>userId</con:targetType>
+                        <con:targetStep>Get policy</con:targetStep>
+                        <con:type>JSONPATH</con:type>
+                        <con:upgraded>true</con:upgraded>
+                    </con:transfers>
                 </con:config>
             </con:testStep>
             <con:testStep type="restrequest" name="Get policies" id="3401550e-9505-4cac-922a-21a0d5104cad">
@@ -166,6 +230,54 @@
                         <con:parameterOrder>
                             <con:entry>personId</con:entry>
                         </con:parameterOrder>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="transfer" name="Transfer policyId" id="10b3cd3e-5c7d-48cf-8402-efe3fc67d5a7">
+                <con:settings/>
+                <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true"
+                                   ignoreEmpty="false" transferToAll="false" entitize="false"
+                                   transferChildNodes="false">
+                        <con:name>policyId</con:name>
+                        <con:sourceType>Response</con:sourceType>
+                        <con:sourceStep>Get policies</con:sourceStep>
+                        <con:sourcePath>[0]id</con:sourcePath>
+                        <con:targetType>policyId</con:targetType>
+                        <con:targetStep>Get policy</con:targetStep>
+                        <con:type>JSONPATH</con:type>
+                        <con:upgraded>true</con:upgraded>
+                    </con:transfers>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Get policy" id="545642be-b411-4883-a40f-94279e6e3433">
+                <con:settings/>
+                <con:config service="http://localhost:8080" resourcePath="/policies/{userId}/{policyId}"
+                            methodName="Method 1" xsi:type="con:RestRequestStep"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Get policy" id="24f72a95-e3e5-4dd6-a880-11de41a53e69"
+                                     mediaType="application/json">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://localhost:8080</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://localhost/policies/userId/%24Jb5WmaAGaB%40njLpcRi</con:originalUri>
+                        <con:assertion type="Valid HTTP Status Codes" id="db9ea693-b84e-4277-b1b7-9c55a921d718"
+                                       name="Valid HTTP Status Codes">
+                            <con:configuration>
+                                <codes>200</codes>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>No Authorization</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <con:entry key="policyId" value="$Jb5WmaAGaB@njLpcRi"/>
+                            <con:entry key="userId" value="$Jb5WmZcGFri0gSVaUW"/>
+                        </con:parameters>
                     </con:restRequest>
                 </con:config>
             </con:testStep>

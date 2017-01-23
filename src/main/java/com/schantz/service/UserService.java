@@ -15,12 +15,11 @@ import org.springframework.web.reactive.function.client.*;
 public class UserService {
 	
 	@CacheResult(cacheName = "user")
-	public User getUser(String personRegistration) {
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		
-		ClientRequest<Void> request = ClientRequest.GET(UrlParams.PERSON_SEARCH_URL, personRegistration)
+	public User getUserBySocialSecurityNumber(String socialSecurityNumber) {
+		ClientRequest<Void> request = ClientRequest.GET(UrlParams.PERSON_SEARCH_URL, socialSecurityNumber)
 				.build();
 		
+		WebClient client = WebClient.create(new ReactorClientHttpConnector());
 		PersonSearchQueryResult person = client.exchange(request)
 				.then(response -> response.bodyToMono(PersonSearchQueryResult.class))
 				.block();
@@ -28,6 +27,27 @@ public class UserService {
 		PersonSearchEntry personSearchEntry = person.getEntryCollection().get(0);
 		PersonNameCq name = personSearchEntry.getName();
 		
-		return new User(personSearchEntry.getPersonId().getUniqueId(), name.getFirstName(), name.getMiddleName(), name.getLastName());
+		User user = new User(personSearchEntry.getPersonId().getUniqueId(), name.getFirstName(), name.getMiddleName(), name.getLastName());
+		user.setSocialSecurityNumber(personSearchEntry.getPersonId().getRegistration());
+		return user;
+	}
+	
+	@CacheResult(cacheName = "user")
+	public User getUser(String id) {
+		ClientRequest<Void> request = ClientRequest.GET(UrlParams.PERSON_URL, id)
+				.build();
+		
+		WebClient client = WebClient.create(new ReactorClientHttpConnector());
+		PersonSearchQueryResult personResponse = client.exchange(request)
+				.then(response -> response.bodyToMono(PersonSearchQueryResult.class))
+				.block();
+		
+		PersonSearchEntry personSearchEntry = personResponse.getEntryCollection().get(0);
+		PersonNameCq name = personSearchEntry.getName();
+		
+		User user = new User(personSearchEntry.getPersonId().getUniqueId(), name.getFirstName(), name.getMiddleName(), name.getLastName());
+		user.setSocialSecurityNumber(personSearchEntry.getPersonId().getRegistration());
+		return user;
 	}
 }
+

@@ -19,12 +19,12 @@ public class PolicyController {
 	}
 	
 	@GetMapping("/policies/{userId}")
-	public List<Policy> getPolicies(String userId) {
+	public List<Policy> getPolicies(@PathVariable String userId) {
 		return policyService.getPolicies(userId);
 	}
 	
 	@GetMapping("/policies/{userId}/{policyId}")
-	public Policy getPolicy(String userId, String policyId) {
-		return policyService.getPolicy(policyId);
+	public Policy getPolicy(@PathVariable String userId, @PathVariable String policyId) {
+		return policyService.getPolicy(userId, policyId);
 	}
 }
