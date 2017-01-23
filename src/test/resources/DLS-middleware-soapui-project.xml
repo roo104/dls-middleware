@@ -87,7 +87,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="{policyId}" path="/policies/{userId}/{policyId}" id="a027ef8f-50e8-4607-a601-a07762dc56e6">
+        <con:resource name="Policies" path="/policies/{userId}/{policyId}" id="a027ef8f-50e8-4607-a601-a07762dc56e6">
             <con:settings/>
             <con:parameters>
                 <con:parameter>
@@ -130,6 +130,50 @@
                     <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
                     <con:jmsPropertyConfig/>
                     <con:parameters/>
+                </con:request>
+            </con:method>
+        </con:resource>
+        <con:resource name="Users" path="/users/{id}" id="99ed61f8-0f14-455a-ad9b-fa1903313984">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>id</con:name>
+                    <con:value>id</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>id</con:default>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="Method 1" id="26eacd44-c974-4d07-a5a4-65f7b85bbcf0" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>500</con:status>
+                    <con:params/>
+                    <con:element xmlns:jb5="http://localhost/users/%24Jb5WmZcGFri0gSVaUW">jb5:Fault</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:jb5="http://localhost/users/%24Jb5WmZcGFri0gSVaUW">jb5:Response</con:element>
+                </con:representation>
+                <con:request name="Request 1" id="d355f6af-a93f-481f-9649-ea21d285adeb" mediaType="application/json">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/users/%24Jb5WmZcGFri0gSVaUW</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters>
+                        <entry key="id" value="$Jb5WmZcGFri0gSVaUW" xmlns="http://eviware.com/soapui/config"/>
+                    </con:parameters>
                 </con:request>
             </con:method>
         </con:resource>

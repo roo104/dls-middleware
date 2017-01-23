@@ -5,6 +5,7 @@ package com.schantz.model;
 
 import java.time.*;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 @Getter
@@ -17,6 +18,7 @@ public class Policy {
 	@Setter
 	private String insuredPersonId;
 	@Setter
+	@JsonIgnore
 	private String eventTransId;
 	@Setter
 	private String agreementId;
