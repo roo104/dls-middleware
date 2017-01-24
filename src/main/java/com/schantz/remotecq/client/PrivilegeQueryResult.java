@@ -4,36 +4,60 @@ import java.io.*;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
+
 public class PrivilegeQueryResult implements Serializable {
-  @JsonProperty("preparedLocks")
-  private List<CqLock> preparedLocks = new ArrayList<CqLock>();
-
-  @JsonProperty("privilegeCqCollection")
-  private List<PrivilegeCq> privilegeCqCollection = new ArrayList<PrivilegeCq>();
-
-  public PrivilegeQueryResult addPreparedLocksItem(CqLock preparedLocksItem) {
-    this.preparedLocks.add(preparedLocksItem);
-    return this;
-  }
-
-  public List<CqLock> getPreparedLocks() {
-    return preparedLocks;
-  }
-
-  public void setPreparedLocks(List<CqLock> preparedLocks) {
-    this.preparedLocks = preparedLocks;
-  }
-  public PrivilegeQueryResult addPrivilegeCqCollectionItem(PrivilegeCq privilegeCqCollectionItem) {
-    this.privilegeCqCollection.add(privilegeCqCollectionItem);
-    return this;
-  }
-
-  public List<PrivilegeCq> getPrivilegeCqCollection() {
-    return privilegeCqCollection;
-  }
-
-  public void setPrivilegeCqCollection(List<PrivilegeCq> privilegeCqCollection) {
-    this.privilegeCqCollection = privilegeCqCollection;
-  }
+	@JsonProperty("preparedLocks")
+	private List<CqLock> preparedLocks = new ArrayList<CqLock>();
+	
+	@JsonProperty("entryCollection")
+	private List<PrivilegeCq> entryCollection = new ArrayList<PrivilegeCq>();
+	
+	@JsonProperty("sortOrderCq")
+	private String sortOrderCq = null;
+	
+	@JsonProperty("pagingInfoCq")
+	private PagingInfoCq pagingInfoCq = null;
+	
+	public PrivilegeQueryResult addPreparedLocksItem(CqLock preparedLocksItem) {
+		this.preparedLocks.add(preparedLocksItem);
+		return this;
+	}
+	
+	public List<CqLock> getPreparedLocks() {
+		return preparedLocks;
+	}
+	
+	public void setPreparedLocks(List<CqLock> preparedLocks) {
+		this.preparedLocks = preparedLocks;
+	}
+	
+	public PrivilegeQueryResult addEntryCollectionItem(PrivilegeCq entryCollectionItem) {
+		this.entryCollection.add(entryCollectionItem);
+		return this;
+	}
+	
+	public List<PrivilegeCq> getEntryCollection() {
+		return entryCollection;
+	}
+	
+	public void setEntryCollection(List<PrivilegeCq> entryCollection) {
+		this.entryCollection = entryCollection;
+	}
+	
+	public String getSortOrderCq() {
+		return sortOrderCq;
+	}
+	
+	public void setSortOrderCq(String sortOrderCq) {
+		this.sortOrderCq = sortOrderCq;
+	}
+	
+	public PagingInfoCq getPagingInfoCq() {
+		return pagingInfoCq;
+	}
+	
+	public void setPagingInfoCq(PagingInfoCq pagingInfoCq) {
+		this.pagingInfoCq = pagingInfoCq;
+	}
 }
 

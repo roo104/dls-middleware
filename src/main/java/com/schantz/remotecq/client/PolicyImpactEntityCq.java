@@ -4,76 +4,78 @@ import java.io.*;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
+
 public class PolicyImpactEntityCq implements Serializable {
-  @JsonProperty("uid")
-  private String uid = null;
-
-  @JsonProperty("exceptionStackTrace")
-  private String exceptionStackTrace = null;
-
-  @JsonProperty("impactAssessmentTypeCq")
-  private String impactAssessmentTypeCq = null;
-
-  @JsonProperty("impactEntityMessageCqCollection")
-  private List<ImpactEntityMessageCq> impactEntityMessageCqCollection = new ArrayList<ImpactEntityMessageCq>();
-
-  @JsonProperty("policyIdCq")
-  private PolicyIdCq policyIdCq = null;
-
-  @JsonProperty("agreementIdCq")
-  private AgreementIdCq agreementIdCq = null;
-
-
-  public String getUid() {
-    return uid;
-  }
-
-  public void setUid(String uid) {
-    this.uid = uid;
-  }
-
-  public String getExceptionStackTrace() {
-    return exceptionStackTrace;
-  }
-
-  public void setExceptionStackTrace(String exceptionStackTrace) {
-    this.exceptionStackTrace = exceptionStackTrace;
-  }
-
-  public String getImpactAssessmentTypeCq() {
-    return impactAssessmentTypeCq;
-  }
-
-  public void setImpactAssessmentTypeCq(String impactAssessmentTypeCq) {
-    this.impactAssessmentTypeCq = impactAssessmentTypeCq;
-  }
-  public PolicyImpactEntityCq addImpactEntityMessageCqCollectionItem(ImpactEntityMessageCq impactEntityMessageCqCollectionItem) {
-    this.impactEntityMessageCqCollection.add(impactEntityMessageCqCollectionItem);
-    return this;
-  }
-
-  public List<ImpactEntityMessageCq> getImpactEntityMessageCqCollection() {
-    return impactEntityMessageCqCollection;
-  }
-
-  public void setImpactEntityMessageCqCollection(List<ImpactEntityMessageCq> impactEntityMessageCqCollection) {
-    this.impactEntityMessageCqCollection = impactEntityMessageCqCollection;
-  }
-
-  public PolicyIdCq getPolicyIdCq() {
-    return policyIdCq;
-  }
-
-  public void setPolicyIdCq(PolicyIdCq policyIdCq) {
-    this.policyIdCq = policyIdCq;
-  }
-
-  public AgreementIdCq getAgreementIdCq() {
-    return agreementIdCq;
-  }
-
-  public void setAgreementIdCq(AgreementIdCq agreementIdCq) {
-    this.agreementIdCq = agreementIdCq;
-  }
+	@JsonProperty("uid")
+	private String uid = null;
+	
+	@JsonProperty("exceptionStackTrace")
+	private String exceptionStackTrace = null;
+	
+	@JsonProperty("impactAssessmentTypeCq")
+	private String impactAssessmentTypeCq = null;
+	
+	@JsonProperty("impactEntityMessageCqCollection")
+	private List<ImpactEntityMessageCq> impactEntityMessageCqCollection = new ArrayList<ImpactEntityMessageCq>();
+	
+	@JsonProperty("policyIdCq")
+	private PolicyIdCq policyIdCq = null;
+	
+	@JsonProperty("agreementIdCq")
+	private AgreementIdCq agreementIdCq = null;
+	
+	
+	public String getUid() {
+		return uid;
+	}
+	
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+	
+	public String getExceptionStackTrace() {
+		return exceptionStackTrace;
+	}
+	
+	public void setExceptionStackTrace(String exceptionStackTrace) {
+		this.exceptionStackTrace = exceptionStackTrace;
+	}
+	
+	public String getImpactAssessmentTypeCq() {
+		return impactAssessmentTypeCq;
+	}
+	
+	public void setImpactAssessmentTypeCq(String impactAssessmentTypeCq) {
+		this.impactAssessmentTypeCq = impactAssessmentTypeCq;
+	}
+	
+	public PolicyImpactEntityCq addImpactEntityMessageCqCollectionItem(ImpactEntityMessageCq impactEntityMessageCqCollectionItem) {
+		this.impactEntityMessageCqCollection.add(impactEntityMessageCqCollectionItem);
+		return this;
+	}
+	
+	public List<ImpactEntityMessageCq> getImpactEntityMessageCqCollection() {
+		return impactEntityMessageCqCollection;
+	}
+	
+	public void setImpactEntityMessageCqCollection(List<ImpactEntityMessageCq> impactEntityMessageCqCollection) {
+		this.impactEntityMessageCqCollection = impactEntityMessageCqCollection;
+	}
+	
+	public PolicyIdCq getPolicyIdCq() {
+		return policyIdCq;
+	}
+	
+	public void setPolicyIdCq(PolicyIdCq policyIdCq) {
+		this.policyIdCq = policyIdCq;
+	}
+	
+	public AgreementIdCq getAgreementIdCq() {
+		return agreementIdCq;
+	}
+	
+	public void setAgreementIdCq(AgreementIdCq agreementIdCq) {
+		this.agreementIdCq = agreementIdCq;
+	}
 }
 

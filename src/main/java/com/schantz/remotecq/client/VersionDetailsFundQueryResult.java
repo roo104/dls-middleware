@@ -4,32 +4,33 @@ import java.io.*;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
+
 public class VersionDetailsFundQueryResult implements Serializable {
-  @JsonProperty("preparedLocks")
-  private List<CqLock> preparedLocks = new ArrayList<CqLock>();
-
-  @JsonProperty("fundVersionDetailsCq")
-  private FundVersionDetailsCq fundVersionDetailsCq = null;
-
-  public VersionDetailsFundQueryResult addPreparedLocksItem(CqLock preparedLocksItem) {
-    this.preparedLocks.add(preparedLocksItem);
-    return this;
-  }
-
-  public List<CqLock> getPreparedLocks() {
-    return preparedLocks;
-  }
-
-  public void setPreparedLocks(List<CqLock> preparedLocks) {
-    this.preparedLocks = preparedLocks;
-  }
-
-  public FundVersionDetailsCq getFundVersionDetailsCq() {
-    return fundVersionDetailsCq;
-  }
-
-  public void setFundVersionDetailsCq(FundVersionDetailsCq fundVersionDetailsCq) {
-    this.fundVersionDetailsCq = fundVersionDetailsCq;
-  }
+	@JsonProperty("preparedLocks")
+	private List<CqLock> preparedLocks = new ArrayList<CqLock>();
+	
+	@JsonProperty("fundVersionDetailsCq")
+	private FundVersionDetailsCq fundVersionDetailsCq = null;
+	
+	public VersionDetailsFundQueryResult addPreparedLocksItem(CqLock preparedLocksItem) {
+		this.preparedLocks.add(preparedLocksItem);
+		return this;
+	}
+	
+	public List<CqLock> getPreparedLocks() {
+		return preparedLocks;
+	}
+	
+	public void setPreparedLocks(List<CqLock> preparedLocks) {
+		this.preparedLocks = preparedLocks;
+	}
+	
+	public FundVersionDetailsCq getFundVersionDetailsCq() {
+		return fundVersionDetailsCq;
+	}
+	
+	public void setFundVersionDetailsCq(FundVersionDetailsCq fundVersionDetailsCq) {
+		this.fundVersionDetailsCq = fundVersionDetailsCq;
+	}
 }
 

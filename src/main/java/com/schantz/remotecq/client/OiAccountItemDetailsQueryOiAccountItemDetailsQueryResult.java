@@ -3,17 +3,18 @@ package com.schantz.remotecq.client;
 import java.io.*;
 
 import com.fasterxml.jackson.annotation.*;
+
 public class OiAccountItemDetailsQueryOiAccountItemDetailsQueryResult implements Serializable {
-  @JsonProperty("oiAccountItemIdCq")
-  private OiAccountItemIdCq oiAccountItemIdCq = null;
-
-
-  public OiAccountItemIdCq getOiAccountItemIdCq() {
-    return oiAccountItemIdCq;
-  }
-
-  public void setOiAccountItemIdCq(OiAccountItemIdCq oiAccountItemIdCq) {
-    this.oiAccountItemIdCq = oiAccountItemIdCq;
-  }
+	@JsonProperty("oiAccountItemIdCq")
+	private OiAccountItemIdCq oiAccountItemIdCq = null;
+	
+	
+	public OiAccountItemIdCq getOiAccountItemIdCq() {
+		return oiAccountItemIdCq;
+	}
+	
+	public void setOiAccountItemIdCq(OiAccountItemIdCq oiAccountItemIdCq) {
+		this.oiAccountItemIdCq = oiAccountItemIdCq;
+	}
 }
 

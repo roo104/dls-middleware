@@ -3,17 +3,18 @@ package com.schantz.remotecq.client;
 import java.io.*;
 
 import com.fasterxml.jackson.annotation.*;
+
 public class CancelQuoteCommand implements Serializable {
-  @JsonProperty("quoteId")
-  private QuoteIdCq quoteId = null;
-
-
-  public QuoteIdCq getQuoteId() {
-    return quoteId;
-  }
-
-  public void setQuoteId(QuoteIdCq quoteId) {
-    this.quoteId = quoteId;
-  }
+	@JsonProperty("quoteId")
+	private QuoteIdCq quoteId = null;
+	
+	
+	public QuoteIdCq getQuoteId() {
+		return quoteId;
+	}
+	
+	public void setQuoteId(QuoteIdCq quoteId) {
+		this.quoteId = quoteId;
+	}
 }
 
