@@ -7,6 +7,7 @@ import com.schantz.errorhandling.*;
 import com.schantz.model.*;
 import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.*;
@@ -15,32 +16,27 @@ import org.springframework.web.reactive.function.client.*;
 @Service
 public class LoginService {
 	
+	@Autowired
+	private UserService userService;
+	
 	public Login login(String socialSecurityNumber, String password) {
 		LoginCommand loginCommand = new LoginCommand();
 		loginCommand.setUsername("admin@schantz.com");
 		loginCommand.setPwd("123");
 		
-		final String[] sessionId = new String[1];
-		
 		ClientRequest<LoginCommand> loginRequest = ClientRequest.POST(UrlParams.LOGIN_URL)
 				.body(BodyInserters.fromObject(loginCommand));
 		
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		ClientRequest<Void> personRequest = ClientRequest.GET(UrlParams.PERSON_SEARCH_URL, socialSecurityNumber).build();
 		
-		PersonSearchQueryResult personSearchQueryResult = client.exchange(loginRequest)
+		LoginIdPairCommandResult loginIdPairCommandResult = client.exchange(loginRequest)
 				.then(response -> response.bodyToMono(LoginIdPairCommandResult.class))
 				.doOnError(throwable -> {
 					throw new LoginException("Invalid credentials");
 				})
-				.flatMap(loginIdPairCommandResult -> {
-					sessionId[0] = loginIdPairCommandResult.getIdentifierA().getSessionToken();
-					return client.exchange(personRequest)
-							.then(response -> response.bodyToMono(PersonSearchQueryResult.class))
-							.subscribe();
-				})
-				.blockFirst();
+				.block();
 		
-		return new Login(sessionId[0], personSearchQueryResult.getEntryCollection().get(0).getPersonId().getUniqueId());
+		User user = userService.getUserBySocialSecurityNumber(socialSecurityNumber);
+		return new Login(loginIdPairCommandResult.getIdentifierA().getSessionToken(), user.getId());
 	}
 }
