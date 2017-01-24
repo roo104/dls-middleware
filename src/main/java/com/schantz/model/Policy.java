@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 @Getter
+@RequiredArgsConstructor
 public class Policy {
 	
 	private final String id;
@@ -22,10 +23,5 @@ public class Policy {
 	private String eventTransId;
 	@Setter
 	private String agreementId;
-	
-	public Policy(String id, LocalDate startDate) {
-		this.id = id;
-		this.startDate = startDate;
-	}
 	
 }

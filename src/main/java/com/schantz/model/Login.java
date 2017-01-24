@@ -6,13 +6,10 @@ package com.schantz.model;
 import lombok.*;
 
 @Getter
+@RequiredArgsConstructor
 public class Login {
 	
 	private final String sessionToken;
 	private final String userId;
 	
-	public Login(String sessionToken, String userId) {
-		this.sessionToken = sessionToken;
-		this.userId = userId;
-	}
 }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 @Getter
+@RequiredArgsConstructor
 public class User {
 	
 	private final String id;
@@ -17,10 +18,4 @@ public class User {
 	@JsonIgnore
 	private String socialSecurityNumber;
 	
-	public User(String id, String firstName, String middleName, String lastName) {
-		this.id = id;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-	}
 }

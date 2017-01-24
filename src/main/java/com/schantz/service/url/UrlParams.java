@@ -9,8 +9,9 @@ public class UrlParams {
 	
 	public static final String LOGIN_URL = BASE_URL + "security/users/command/loginCommand";
 	public static final String POLICY_SEARCH_URL = BASE_URL + "policy/query/policySearchQuery?pagingInfoCq=0,20&personRegistration={socialSecurityNumber}";
-	public static final String POLICY_URL = BASE_URL + "policy/query/basicInfoPolicyQuery/{eventTransId}/";
+	public static final String POLICY_URL = BASE_URL + "policy/query/basicInfoPolicyQuery/{eventTransUid}/";
 	public static final String PERSON_SEARCH_URL = BASE_URL + "person/query/personSearchQuery?registration={socialSecurityNumber}";
 	public static final String PERSON_URL = BASE_URL + "person/query/personSearchQuery?personUid={personUid}";
+	public static final String CONTRIBUTION_URL = BASE_URL + "policy/query/contribution/contributionInfoPolicyQuery/{eventTransUid}";
 	
 }
