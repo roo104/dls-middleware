@@ -16,7 +16,7 @@ public class ContributionController {
 	@Autowired
 	private ContributionService contributionService;
 	
-	@GetMapping("/contributions/{userId}/{policyId}")
+	@GetMapping("/policies/{userId}/{policyId}/contributions")
 	public List<Contribution> getContributions(@PathVariable String userId, @PathVariable String policyId) {
 		return contributionService.getContribution(userId, policyId);
 	}

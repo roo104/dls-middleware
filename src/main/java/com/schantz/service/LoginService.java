@@ -24,6 +24,7 @@ public class LoginService {
 		loginCommand.setUsername("admin@schantz.com");
 		loginCommand.setPwd("123");
 		
+		
 		ClientRequest<LoginCommand> loginRequest = ClientRequest.POST(UrlParams.LOGIN_URL)
 				.body(BodyInserters.fromObject(loginCommand));
 		

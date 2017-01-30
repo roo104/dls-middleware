@@ -10,11 +10,13 @@ import com.schantz.model.*;
 import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
 import javax.cache.annotation.*;
+import lombok.extern.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
 
+@Slf4j
 @Service
 public class PolicyService {
 	
@@ -23,6 +25,7 @@ public class PolicyService {
 	
 	@CacheResult(cacheName = "policy")
 	public List<Policy> getPolicies(String userId) {
+		log.info("Getting policies for user {}", userId);
 		User user = userService.getUser(userId);
 		
 		ClientRequest<Void> policyRequest = ClientRequest.GET(UrlParams.POLICY_SEARCH_URL, user.getSocialSecurityNumber())
@@ -33,7 +36,8 @@ public class PolicyService {
 				.then(response -> response.bodyToMono(PolicySearchQueryResult.class))
 				.block();
 		
-		return policies.getEntryCollection()
+		List<PolicySearchEntry> entryCollection = policies.getEntryCollection();
+		return entryCollection
 				.stream()
 				.map(policy -> {
 					Policy p = new Policy(policy.getPolicyId().getPolicyUid(), policy.getStartDate());

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
+import org.springframework.web.util.*;
 
 @Service
 public class ContributionService {
@@ -22,15 +23,28 @@ public class ContributionService {
 	
 	public List<Contribution> getContribution(String userId, String policyId) {
 		Policy policy = policyService.getPolicy(userId, policyId);
-		
-		ClientRequest<Void> loginRequest = ClientRequest.GET(UrlParams.CONTRIBUTION_URL, policy.getEventTransId())
-				.build();
-		
+
+//		ClientRequest<Void> loginRequest = ClientRequest.GET(UrlParams.CONTRIBUTION_URL, policy.getEventTransId())
+//				.build();
+//
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
+//
+//		ContributionInfoPolicyQueryResult queryResult = client.exchange(loginRequest)
+//				.then(response -> response.bodyToMono(ContributionInfoPolicyQueryResult.class))
+//				.block();
 		
-		ContributionInfoPolicyQueryResult queryResult = client.exchange(loginRequest)
+		
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.CONTRIBUTION_URL);
+		
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		
+		
+		ContributionInfoPolicyQueryResult queryResult = operations.get()
+				.uri(factory -> factory.uriString("/").pathSegment("eventTransUid", policy.getEventTransId()).build())
+				.exchange()
 				.then(response -> response.bodyToMono(ContributionInfoPolicyQueryResult.class))
 				.block();
+		
 		
 		return queryResult.getContributionParameterInfoCqCollection()
 				.stream()

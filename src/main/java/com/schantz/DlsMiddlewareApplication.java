@@ -22,7 +22,8 @@ public class DlsMiddlewareApplication {
 				.select()
 				.apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any())
-				.build();
+				.build()
+				.alternateTypeRules();
 	}
 	
 	private ApiInfo apiInfo() {

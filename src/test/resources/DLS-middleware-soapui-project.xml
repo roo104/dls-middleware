@@ -190,7 +190,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="{policyId}" path="/contributions/{userId}/{policyId}"
+        <con:resource name="{policyId}" path="/policies/{userId}/{policyId}/contributions"
                       id="faf286ce-ab67-40bf-a84f-ea583815a82d">
             <con:settings/>
             <con:parameters>
@@ -226,15 +226,155 @@
                     <con:element>Response</con:element>
                 </con:representation>
                 <con:request name="Request 1" id="cb60e094-b694-479a-a7ab-dc9fb4b8e581" mediaType="application/json">
-                    <con:settings/>
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
+                    <con:originalUri>http://localhost/policies/userId/policyId/contributions</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
                     <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
                     <con:jmsPropertyConfig/>
                     <con:parameters/>
+                </con:request>
+            </con:method>
+        </con:resource>
+        <con:resource name="payouts" path="/policies/{userId}/{policyId}/payouts"
+                      id="a8c9c35f-6e71-4e2a-8fde-d91752814d2e">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>userId</con:name>
+                    <con:value>userId</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>userId</con:default>
+                </con:parameter>
+                <con:parameter>
+                    <con:name>policyId</con:name>
+                    <con:value>policyId</con:value>
+                    <con:style>TEMPLATE</con:style>
+                    <con:default>policyId</con:default>
+                </con:parameter>
+                <con:parameter>
+                    <con:name>periodLength</con:name>
+                    <con:value/>
+                    <con:style>QUERY</con:style>
+                    <con:default/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="Method 1" id="86e4910f-434f-490b-8322-680c66b950c7" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>500</con:status>
+                    <con:params/>
+                    <con:element xmlns:pay="http://localhost/policies/userId/policyId/payouts">pay:Fault</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>0</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>0</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:pay="http://localhost/policies/userId/policyId/payouts">pay:Response
+                    </con:element>
+                </con:representation>
+                <con:representation type="FAULT">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>400</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="FAULT">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>400</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="FAULT">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>400</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:request name="Request 1" id="52852e15-5b80-45f7-aaa2-eda4540e89f4" mediaType="application/json">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/policies/userId/policyId/payouts</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters>
+                        <entry key="periodLength" value="M" xmlns="http://eviware.com/soapui/config"/>
+                    </con:parameters>
+                    <con:parameterOrder>
+                        <con:entry>userId</con:entry>
+                        <con:entry>policyId</con:entry>
+                        <con:entry>periodLength</con:entry>
+                    </con:parameterOrder>
                 </con:request>
             </con:method>
         </con:resource>
@@ -406,7 +546,7 @@
             </con:testStep>
             <con:testStep type="restrequest" name="Get contributions" id="fae5f8b5-9112-4301-88f2-daf453366ab9">
                 <con:settings/>
-                <con:config service="http://localhost:8080" resourcePath="/contributions/{userId}/{policyId}"
+                <con:config service="http://localhost:8080" resourcePath="/policies/{userId}/{policyId}/contributions"
                             methodName="Method 1" xsi:type="con:RestRequestStep"
                             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                     <con:restRequest name="Get contributions" id="cb60e094-b694-479a-a7ab-dc9fb4b8e581"
@@ -433,6 +573,43 @@
                             <con:entry key="policyId" value="${#TestCase#policyId}"/>
                             <con:entry key="userId" value="${#TestCase#userId}"/>
                         </con:parameters>
+                    </con:restRequest>
+                </con:config>
+            </con:testStep>
+            <con:testStep type="restrequest" name="Get payout" id="4a7a81d8-2189-4b1a-a543-4d2bcae2d5cc">
+                <con:settings/>
+                <con:config service="http://localhost:8080" resourcePath="/policies/{userId}/{policyId}/payouts"
+                            methodName="Method 1" xsi:type="con:RestRequestStep"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <con:restRequest name="Get payout" id="52852e15-5b80-45f7-aaa2-eda4540e89f4"
+                                     mediaType="application/json">
+                        <con:settings>
+                            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                        </con:settings>
+                        <con:endpoint>http://localhost:8080</con:endpoint>
+                        <con:request/>
+                        <con:originalUri>http://localhost/policies/userId/policyId/payouts</con:originalUri>
+                        <con:assertion type="Valid HTTP Status Codes" id="955e1fe4-f31f-4c59-9bd1-e16f6b6450fe"
+                                       name="Valid HTTP Status Codes">
+                            <con:configuration>
+                                <codes>200</codes>
+                            </con:configuration>
+                        </con:assertion>
+                        <con:credentials>
+                            <con:authType>No Authorization</con:authType>
+                        </con:credentials>
+                        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                        <con:jmsPropertyConfig/>
+                        <con:parameters>
+                            <con:entry key="periodLength" value="MONTHLY"/>
+                            <con:entry key="policyId" value="${#TestCase#policyId}"/>
+                            <con:entry key="userId" value="${#TestCase#userId"/>
+                        </con:parameters>
+                        <con:parameterOrder>
+                            <con:entry>userId</con:entry>
+                            <con:entry>policyId</con:entry>
+                            <con:entry>periodLength</con:entry>
+                        </con:parameterOrder>
                     </con:restRequest>
                 </con:config>
             </con:testStep>
