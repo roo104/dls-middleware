@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
+import org.springframework.web.util.*;
 
 @Slf4j
 @Service
@@ -28,16 +29,17 @@ public class PolicyService {
 		log.info("Getting policies for user {}", userId);
 		User user = userService.getUser(userId);
 		
-		ClientRequest<Void> policyRequest = ClientRequest.GET(UrlParams.POLICY_SEARCH_URL, user.getSocialSecurityNumber())
-				.build();
-		
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		PolicySearchQueryResult policies = client.exchange(policyRequest)
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.POLICY_SEARCH_URL);
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		
+		PolicySearchQueryResult policies = operations.get()
+				.uri(factory -> factory.uriString("").queryParam("personRegistration", user.getSocialSecurityNumber()).build())
+				.exchange()
 				.then(response -> response.bodyToMono(PolicySearchQueryResult.class))
 				.block();
 		
-		List<PolicySearchEntry> entryCollection = policies.getEntryCollection();
-		return entryCollection
+		return policies.getEntryCollection()
 				.stream()
 				.map(policy -> {
 					Policy p = new Policy(policy.getPolicyId().getPolicyUid(), policy.getStartDate());
@@ -56,13 +58,15 @@ public class PolicyService {
 				.filter(policy -> policy.getId().equals(policyId))
 				.findFirst();
 		
+		WebClient client = WebClient.create(new ReactorClientHttpConnector());
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.POLICY_URL);
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		
 		Policy policy = null;
 		if (policyOptional.isPresent()) {
-			ClientRequest<Void> request = ClientRequest.GET(UrlParams.POLICY_URL, policyOptional.get().getEventTransId())
-					.build();
-			
-			WebClient client = WebClient.create(new ReactorClientHttpConnector());
-			BasicInfoPolicyQueryResult policyResult = client.exchange(request)
+			BasicInfoPolicyQueryResult policyResult = operations.get()
+					.uri(factory -> factory.uriString("").pathSegment(policyOptional.get().getEventTransId()).build())
+					.exchange()
 					.then(response -> response.bodyToMono(BasicInfoPolicyQueryResult.class))
 					.block();
 			
@@ -71,7 +75,6 @@ public class PolicyService {
 			policy.setAgreementId(policyResult.getAgreementIdCq().getLifeProductUid());
 		}
 		return policy;
-		
 	}
 	
 }

@@ -3,7 +3,6 @@
  */
 package com.schantz.service;
 
-import com.schantz.errorhandling.*;
 import com.schantz.model.*;
 import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
@@ -12,6 +11,7 @@ import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.*;
 import org.springframework.web.reactive.function.client.*;
+import org.springframework.web.util.*;
 
 @Service
 public class LoginService {
@@ -24,17 +24,14 @@ public class LoginService {
 		loginCommand.setUsername("admin@schantz.com");
 		loginCommand.setPwd("123");
 		
-		
-		ClientRequest<LoginCommand> loginRequest = ClientRequest.POST(UrlParams.LOGIN_URL)
-				.body(BodyInserters.fromObject(loginCommand));
-		
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.LOGIN_URL);
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
 		
-		LoginIdPairCommandResult loginIdPairCommandResult = client.exchange(loginRequest)
+		LoginIdPairCommandResult loginIdPairCommandResult = operations.post()
+				.uri("")
+				.exchange(BodyInserters.fromObject(loginCommand))
 				.then(response -> response.bodyToMono(LoginIdPairCommandResult.class))
-				.doOnError(throwable -> {
-					throw new LoginException("Invalid credentials");
-				})
 				.block();
 		
 		User user = userService.getUserBySocialSecurityNumber(socialSecurityNumber);

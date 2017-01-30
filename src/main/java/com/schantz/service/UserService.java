@@ -10,6 +10,7 @@ import javax.cache.annotation.*;
 import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
+import org.springframework.web.util.*;
 
 @Service
 public class UserService {
@@ -17,11 +18,12 @@ public class UserService {
 	@CacheResult(cacheName = "user")
 	public User getUserBySocialSecurityNumber(String socialSecurityNumber) {
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.PERSON_SEARCH_URL);
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
 		
-		ClientRequest<Void> request = ClientRequest.GET(UrlParams.PERSON_SEARCH_URL, socialSecurityNumber)
-				.build();
-		
-		PersonSearchQueryResult person = client.exchange(request)
+		PersonSearchQueryResult person = operations.get()
+				.uri(factory -> factory.uriString("").queryParam("registration", socialSecurityNumber).build())
+				.exchange()
 				.then(response -> response.bodyToMono(PersonSearchQueryResult.class))
 				.block();
 		
@@ -35,11 +37,13 @@ public class UserService {
 	
 	@CacheResult(cacheName = "user")
 	public User getUser(String id) {
-		ClientRequest<Void> request = ClientRequest.GET(UrlParams.PERSON_URL, id)
-				.build();
-		
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		PersonSearchQueryResult personResponse = client.exchange(request)
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.PERSON_URL);
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		
+		PersonSearchQueryResult personResponse = operations.get()
+				.uri(factory -> factory.uriString("").queryParam("personUid", id).build())
+				.exchange()
 				.then(response -> response.bodyToMono(PersonSearchQueryResult.class))
 				.block();
 		

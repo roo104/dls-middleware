@@ -15,6 +15,7 @@ import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.*;
 import org.springframework.web.reactive.function.client.*;
+import org.springframework.web.util.*;
 
 @Slf4j
 @Service
@@ -41,12 +42,13 @@ public class PayoutService {
 		projectionQuery.setProjectionPerspectiveCq("statePackageCover");
 		projectionQuery.setPeriodLengthCq(periodLength.orElse(PeriodLength.YEARLY).getPeriod());
 		
-		ClientRequest<ProjectionQueryProjectionQueryResult> loginRequest = ClientRequest.POST(UrlParams.PROJECTION_URL)
-				.body(BodyInserters.fromObject(projectionQuery));
-		
 		WebClient client = WebClient.create(new ReactorClientHttpConnector());
+		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.PROJECTION_URL);
+		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
 		
-		ProjectionQueryResult queryResult = client.exchange(loginRequest)
+		ProjectionQueryResult queryResult = operations.post()
+				.uri("")
+				.exchange(BodyInserters.fromObject(projectionQuery))
 				.then(response -> response.bodyToMono(ProjectionQueryResult.class))
 				.block();
 		
@@ -57,7 +59,7 @@ public class PayoutService {
 				.stream()
 				.flatMap(projectionResultSectionCq -> projectionResultSectionCq.getProjectionResultCoverCqCollection().stream())
 				.flatMap(projectionResultCoverCq -> projectionResultCoverCq.getPolicyCoverIdCq().getAgreementCoverVariantIdCq().getVariantName().getTranslationCollection().stream())
-				.map(entityNameTranslationCq -> entityNameTranslationCq.getName());
+				.map(EntityNameTranslationCq::getName);
 		
 		Stream<Double> benefitStream = queryResult.getProjectionResultGroupCqCollection().stream()
 				.map(ProjectionResultGroupCq::getProjectionResultSectionCqCollection)
@@ -68,13 +70,8 @@ public class PayoutService {
 				.flatMap(projectionResultCoverCq -> projectionResultCoverCq.getProjectionResultCoverBenefitCqCollection().stream())
 				.map(ProjectionResultCoverBenefitCq::getBenefit);
 		
-		Map<String, Double> payables = StreamUtils.zip(headerStream,
-				benefitStream,
-				(a, b) -> {
-					Map.Entry<String, Double> entry = new AbstractMap.SimpleEntry<>(a, b);
-					return entry;
-				})
-				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
+		Map<String, Double> payables = StreamUtils.zip(headerStream, benefitStream, AbstractMap.SimpleEntry::new)
+				.collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue));
 		
 		
 		return payables;
