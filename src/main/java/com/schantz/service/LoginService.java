@@ -7,11 +7,9 @@ import com.schantz.model.*;
 import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.*;
 import org.springframework.web.reactive.function.client.*;
-import org.springframework.web.util.*;
 
 @Service
 public class LoginService {
@@ -24,11 +22,9 @@ public class LoginService {
 		loginCommand.setUsername("admin@schantz.com");
 		loginCommand.setPwd("123");
 		
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.LOGIN_URL);
-		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		WebClient client = WebClient.create(UrlParams.LOGIN_URL);
 		
-		LoginIdPairCommandResult loginIdPairCommandResult = operations.post()
+		LoginIdPairCommandResult loginIdPairCommandResult = client.post()
 				.uri("")
 				.exchange(BodyInserters.fromObject(loginCommand))
 				.then(response -> response.bodyToMono(LoginIdPairCommandResult.class))

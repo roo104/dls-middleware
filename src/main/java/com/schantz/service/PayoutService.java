@@ -11,15 +11,17 @@ import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
 import com.schantz.util.*;
 import lombok.extern.slf4j.*;
-import org.springframework.http.client.reactive.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.*;
 import org.springframework.web.reactive.function.client.*;
-import org.springframework.web.util.*;
 
 @Slf4j
 @Service
 public class PayoutService {
+	
+	@Value("${base-url}")
+	private String baseUrl;
 	
 	public Map<String, Double> getPayouts(String userId, String policyId, Optional<PeriodLength> periodLength) {
 		AgeCq ageCq = new AgeCq();
@@ -42,11 +44,9 @@ public class PayoutService {
 		projectionQuery.setProjectionPerspectiveCq("statePackageCover");
 		projectionQuery.setPeriodLengthCq(periodLength.orElse(PeriodLength.YEARLY).getPeriod());
 		
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.PROJECTION_URL);
-		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		WebClient client = WebClient.create(baseUrl + UrlParams.PROJECTION_URL);
 		
-		ProjectionQueryResult queryResult = operations.post()
+		ProjectionQueryResult queryResult = client.post()
 				.uri("")
 				.exchange(BodyInserters.fromObject(projectionQuery))
 				.then(response -> response.bodyToMono(ProjectionQueryResult.class))

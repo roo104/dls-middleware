@@ -1,0 +1,11 @@
+base-url : http://localhost:9001/services/rest/
+
+spring:
+    jackson:
+      serialization:
+        write_dates_as_timestamps : false
+      default-property-inclusion : non_null
+
+    cache:
+      jcache:
+        config : classpath:ehcache.xml

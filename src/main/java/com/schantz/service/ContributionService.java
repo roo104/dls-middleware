@@ -10,10 +10,8 @@ import com.schantz.model.*;
 import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
-import org.springframework.web.util.*;
 
 @Service
 public class ContributionService {
@@ -24,11 +22,9 @@ public class ContributionService {
 	public List<Contribution> getContribution(String userId, String policyId) {
 		Policy policy = policyService.getPolicy(userId, policyId);
 		
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.CONTRIBUTION_URL);
-		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		WebClient client = WebClient.create(UrlParams.CONTRIBUTION_URL);
 		
-		ContributionInfoPolicyQueryResult queryResult = operations.get()
+		ContributionInfoPolicyQueryResult queryResult = client.get()
 				.uri(factory -> factory.uriString("").pathSegment(policy.getEventTransId()).build())
 				.exchange()
 				.then(response -> response.bodyToMono(ContributionInfoPolicyQueryResult.class))

@@ -13,6 +13,6 @@ public class UrlParams {
 	public static final String PERSON_SEARCH_URL = BASE_URL + "person/query/personSearchQuery";
 	public static final String PERSON_URL = BASE_URL + "person/query/personSearchQuery";
 	public static final String CONTRIBUTION_URL = BASE_URL + "policy/query/contribution/contributionInfoPolicyQuery";
-	public static final String PROJECTION_URL = BASE_URL + "projection/query/projectionQuery";
+	public static final String PROJECTION_URL = "projection/query/projectionQuery";
 	
 }

@@ -12,10 +12,8 @@ import com.schantz.service.url.*;
 import javax.cache.annotation.*;
 import lombok.extern.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.client.reactive.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
-import org.springframework.web.util.*;
 
 @Slf4j
 @Service
@@ -29,11 +27,9 @@ public class PolicyService {
 		log.info("Getting policies for user {}", userId);
 		User user = userService.getUser(userId);
 		
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.POLICY_SEARCH_URL);
-		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		WebClient client = WebClient.create(UrlParams.POLICY_SEARCH_URL);
 		
-		PolicySearchQueryResult policies = operations.get()
+		PolicySearchQueryResult policies = client.get()
 				.uri(factory -> factory.uriString("").queryParam("personRegistration", user.getSocialSecurityNumber()).build())
 				.exchange()
 				.then(response -> response.bodyToMono(PolicySearchQueryResult.class))
@@ -58,13 +54,11 @@ public class PolicyService {
 				.filter(policy -> policy.getId().equals(policyId))
 				.findFirst();
 		
-		WebClient client = WebClient.create(new ReactorClientHttpConnector());
-		UriBuilderFactory uriBuilderFactory = new DefaultUriBuilderFactory(UrlParams.POLICY_URL);
-		WebClientOperations operations = WebClientOperations.builder(client).uriBuilderFactory(uriBuilderFactory).build();
+		WebClient client = WebClient.create(UrlParams.POLICY_URL);
 		
 		Policy policy = null;
 		if (policyOptional.isPresent()) {
-			BasicInfoPolicyQueryResult policyResult = operations.get()
+			BasicInfoPolicyQueryResult policyResult = client.get()
 					.uri(factory -> factory.uriString("").pathSegment(policyOptional.get().getEventTransId()).build())
 					.exchange()
 					.then(response -> response.bodyToMono(BasicInfoPolicyQueryResult.class))
