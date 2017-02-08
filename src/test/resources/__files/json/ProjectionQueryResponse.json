@@ -1,0 +1,467 @@
+{
+  "ageDateCqCollection": [
+    {
+      "age": {
+        "year": 67,
+        "month": 0
+      },
+      "date_": "2033-12-01"
+    }
+  ],
+  "projectionResultGroupCqCollection": [
+    {
+      "projectionResultSectionCqCollection": [
+        {
+          "projectionResultCoverCqCollection": [
+            {
+              "currentBenefit": 0,
+              "projectionResultCoverBenefitCqCollection": [
+                {
+                  "projectionAge": {
+                    "age": {
+                      "year": 67,
+                      "month": 0
+                    },
+                    "date_": "2033-12-01"
+                  },
+                  "benefit": 0,
+                  "benefitInflated": 0
+                }
+              ],
+              "policyCoverIdCq": {
+                "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                "agreementCoverVariantIdCq": {
+                  "variantId": "S2",
+                  "variantName": {
+                    "defaultName": "Livrente",
+                    "translationCollection": [
+                      {
+                        "name": "Life annuity",
+                        "locale": "en"
+                      }
+                    ]
+                  },
+                  "agreementCoverIdCq": {
+                    "coverId": "DlsLifeAnnuity",
+                    "coverName": {
+                      "defaultName": "Livrente",
+                      "translationCollection": [
+                        {
+                          "name": "Life annuity",
+                          "locale": "en"
+                        }
+                      ]
+                    },
+                    "agreementPackageIdCq": {
+                      "packageId": "DlsPackageId",
+                      "agreementVersionIdCq": {
+                        "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                        "localVersionNumber": "v.1",
+                        "localVersionNote": "Init by example population",
+                        "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                        "createUser": "System",
+                        "agreementIdCq": {
+                          "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                          "agreementId": "A-00000019",
+                          "agreementName": "Korsbæk bank under overenskomst"
+                        }
+                      },
+                      "packageName": {
+                        "defaultName": "Pakke 1",
+                        "translationCollection": [
+                          {
+                            "name": "Package 1",
+                            "locale": "en"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "policyPackageIdCq": {
+                  "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                  "agreementPackageIdCq": {
+                    "packageId": "DlsPackageId",
+                    "agreementVersionIdCq": {
+                      "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                      "localVersionNumber": "v.1",
+                      "localVersionNote": "Init by example population",
+                      "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                      "createUser": "System",
+                      "agreementIdCq": {
+                        "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                        "agreementId": "A-00000019",
+                        "agreementName": "Korsbæk bank under overenskomst"
+                      }
+                    },
+                    "packageName": {
+                      "defaultName": "Pakke 1",
+                      "translationCollection": [
+                        {
+                          "name": "Package 1",
+                          "locale": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "policyIdCq": {
+                    "id": "2",
+                    "policyUid": "$Jc4YUNnGginzjMNv@Q",
+                    "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
+                  }
+                }
+              },
+              "originalCoverId": {
+                "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                "agreementCoverVariantIdCq": {
+                  "variantId": "S2",
+                  "variantName": {
+                    "defaultName": "Livrente",
+                    "translationCollection": [
+                      {
+                        "name": "Life annuity",
+                        "locale": "en"
+                      }
+                    ]
+                  },
+                  "agreementCoverIdCq": {
+                    "coverId": "DlsLifeAnnuity",
+                    "coverName": {
+                      "defaultName": "Livrente",
+                      "translationCollection": [
+                        {
+                          "name": "Life annuity",
+                          "locale": "en"
+                        }
+                      ]
+                    },
+                    "agreementPackageIdCq": {
+                      "packageId": "DlsPackageId",
+                      "agreementVersionIdCq": {
+                        "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                        "localVersionNumber": "v.1",
+                        "localVersionNote": "Init by example population",
+                        "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                        "createUser": "System",
+                        "agreementIdCq": {
+                          "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                          "agreementId": "A-00000019",
+                          "agreementName": "Korsbæk bank under overenskomst"
+                        }
+                      },
+                      "packageName": {
+                        "defaultName": "Pakke 1",
+                        "translationCollection": [
+                          {
+                            "name": "Package 1",
+                            "locale": "en"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "policyPackageIdCq": {
+                  "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                  "agreementPackageIdCq": {
+                    "packageId": "DlsPackageId",
+                    "agreementVersionIdCq": {
+                      "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                      "localVersionNumber": "v.1",
+                      "localVersionNote": "Init by example population",
+                      "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                      "createUser": "System",
+                      "agreementIdCq": {
+                        "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                        "agreementId": "A-00000019",
+                        "agreementName": "Korsbæk bank under overenskomst"
+                      }
+                    },
+                    "packageName": {
+                      "defaultName": "Pakke 1",
+                      "translationCollection": [
+                        {
+                          "name": "Package 1",
+                          "locale": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "policyIdCq": {
+                    "id": "2",
+                    "policyUid": "$Jc4YUNnGginzjMNv@Q",
+                    "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
+                  }
+                }
+              },
+              "expiryAge": {
+                "year": 67,
+                "month": 0
+              },
+              "benefitPeriod": {
+                "value": 0,
+                "periodLength": "Y"
+              },
+              "insuranceTypeCq": "NUL"
+            },
+            {
+              "currentBenefit": 58753.86,
+              "projectionResultCoverBenefitCqCollection": [
+                {
+                  "projectionAge": {
+                    "age": {
+                      "year": 67,
+                      "month": 0
+                    },
+                    "date_": "2033-12-01"
+                  },
+                  "benefit": 35200.54,
+                  "benefitInflated": 52676.47
+                }
+              ],
+              "policyCoverIdCq": {
+                "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                "agreementCoverVariantIdCq": {
+                  "variantId": "S1",
+                  "variantName": {
+                    "defaultName": "Ratepension",
+                    "translationCollection": [
+                      {
+                        "name": "Certain annuity",
+                        "locale": "en"
+                      }
+                    ]
+                  },
+                  "agreementCoverIdCq": {
+                    "coverId": "DlsCertainAnnuity",
+                    "coverName": {
+                      "defaultName": "Ratepension",
+                      "translationCollection": [
+                        {
+                          "name": "Certain annuity",
+                          "locale": "en"
+                        }
+                      ]
+                    },
+                    "agreementPackageIdCq": {
+                      "packageId": "DlsPackageId",
+                      "agreementVersionIdCq": {
+                        "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                        "localVersionNumber": "v.1",
+                        "localVersionNote": "Init by example population",
+                        "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                        "createUser": "System",
+                        "agreementIdCq": {
+                          "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                          "agreementId": "A-00000019",
+                          "agreementName": "Korsbæk bank under overenskomst"
+                        }
+                      },
+                      "packageName": {
+                        "defaultName": "Pakke 1",
+                        "translationCollection": [
+                          {
+                            "name": "Package 1",
+                            "locale": "en"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "policyPackageIdCq": {
+                  "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                  "agreementPackageIdCq": {
+                    "packageId": "DlsPackageId",
+                    "agreementVersionIdCq": {
+                      "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                      "localVersionNumber": "v.1",
+                      "localVersionNote": "Init by example population",
+                      "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                      "createUser": "System",
+                      "agreementIdCq": {
+                        "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                        "agreementId": "A-00000019",
+                        "agreementName": "Korsbæk bank under overenskomst"
+                      }
+                    },
+                    "packageName": {
+                      "defaultName": "Pakke 1",
+                      "translationCollection": [
+                        {
+                          "name": "Package 1",
+                          "locale": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "policyIdCq": {
+                    "id": "2",
+                    "policyUid": "$Jc4YUNnGginzjMNv@Q",
+                    "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
+                  }
+                }
+              },
+              "originalCoverId": {
+                "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                "agreementCoverVariantIdCq": {
+                  "variantId": "S1",
+                  "variantName": {
+                    "defaultName": "Ratepension",
+                    "translationCollection": [
+                      {
+                        "name": "Certain annuity",
+                        "locale": "en"
+                      }
+                    ]
+                  },
+                  "agreementCoverIdCq": {
+                    "coverId": "DlsCertainAnnuity",
+                    "coverName": {
+                      "defaultName": "Ratepension",
+                      "translationCollection": [
+                        {
+                          "name": "Certain annuity",
+                          "locale": "en"
+                        }
+                      ]
+                    },
+                    "agreementPackageIdCq": {
+                      "packageId": "DlsPackageId",
+                      "agreementVersionIdCq": {
+                        "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                        "localVersionNumber": "v.1",
+                        "localVersionNote": "Init by example population",
+                        "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                        "createUser": "System",
+                        "agreementIdCq": {
+                          "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                          "agreementId": "A-00000019",
+                          "agreementName": "Korsbæk bank under overenskomst"
+                        }
+                      },
+                      "packageName": {
+                        "defaultName": "Pakke 1",
+                        "translationCollection": [
+                          {
+                            "name": "Package 1",
+                            "locale": "en"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "policyPackageIdCq": {
+                  "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+                  "agreementPackageIdCq": {
+                    "packageId": "DlsPackageId",
+                    "agreementVersionIdCq": {
+                      "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                      "localVersionNumber": "v.1",
+                      "localVersionNote": "Init by example population",
+                      "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                      "createUser": "System",
+                      "agreementIdCq": {
+                        "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                        "agreementId": "A-00000019",
+                        "agreementName": "Korsbæk bank under overenskomst"
+                      }
+                    },
+                    "packageName": {
+                      "defaultName": "Pakke 1",
+                      "translationCollection": [
+                        {
+                          "name": "Package 1",
+                          "locale": "en"
+                        }
+                      ]
+                    }
+                  },
+                  "policyIdCq": {
+                    "id": "2",
+                    "policyUid": "$Jc4YUNnGginzjMNv@Q",
+                    "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
+                  }
+                }
+              },
+              "expiryAge": {
+                "year": 67,
+                "month": 0
+              },
+              "benefitPeriod": {
+                "value": 10,
+                "periodLength": "Y"
+              },
+              "insuranceTypeCq": "NUL"
+            }
+          ],
+          "policyPackageIdCq": {
+            "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+            "agreementPackageIdCq": {
+              "packageId": "DlsPackageId",
+              "agreementVersionIdCq": {
+                "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                "localVersionNumber": "v.1",
+                "localVersionNote": "Init by example population",
+                "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                "createUser": "System",
+                "agreementIdCq": {
+                  "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                  "agreementId": "A-00000019",
+                  "agreementName": "Korsbæk bank under overenskomst"
+                }
+              },
+              "packageName": {
+                "defaultName": "Pakke 1",
+                "translationCollection": [
+                  {
+                    "name": "Package 1",
+                    "locale": "en"
+                  }
+                ]
+              }
+            },
+            "policyIdCq": {
+              "id": "2",
+              "policyUid": "$Jc4YUNnGginzjMNv@Q",
+              "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
+            }
+          },
+          "originalPackageId": {
+            "instanceId": "newGeneralDefaultPolicyEventTypeId2016-10-01#1",
+            "agreementPackageIdCq": {
+              "packageId": "DlsPackageId",
+              "agreementVersionIdCq": {
+                "versionId": "$Jc4YTw5Eiz6iTsucOM###null###2015-10-01###null",
+                "localVersionNumber": "v.1",
+                "localVersionNote": "Init by example population",
+                "localProductVersionUid": "$Jc4YTw5Eiz6iTsucOM",
+                "createUser": "System",
+                "agreementIdCq": {
+                  "lifeProductUid": "$Jc4YTvyEiwHIlQo9Wn",
+                  "agreementId": "A-00000019",
+                  "agreementName": "Korsbæk bank under overenskomst"
+                }
+              },
+              "packageName": {
+                "defaultName": "Pakke 1",
+                "translationCollection": [
+                  {
+                    "name": "Package 1",
+                    "locale": "en"
+                  }
+                ]
+              }
+            },
+            "policyIdCq": {
+              "id": "2",
+              "policyUid": "$Jc4YUNnGginzjMNv@Q",
+              "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
