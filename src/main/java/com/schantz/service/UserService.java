@@ -7,15 +7,19 @@ import com.schantz.model.*;
 import com.schantz.remotecq.client.*;
 import com.schantz.service.url.*;
 import javax.cache.annotation.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.reactive.function.client.*;
 
 @Service
 public class UserService {
 	
+	@Value("${base-url}")
+	private String baseUrl;
+	
 	@CacheResult(cacheName = "user")
 	public User getUserBySocialSecurityNumber(String socialSecurityNumber) {
-		WebClient client = WebClient.create(UrlParams.PERSON_SEARCH_URL);
+		WebClient client = WebClient.create(baseUrl + UrlParams.PERSON_URL);
 		
 		PersonSearchQueryResult person = client.get()
 				.uri(factory -> factory.uriString("").queryParam("registration", socialSecurityNumber).build())
@@ -33,7 +37,7 @@ public class UserService {
 	
 	@CacheResult(cacheName = "user")
 	public User getUser(String id) {
-		WebClient client = WebClient.create(UrlParams.PERSON_URL);
+		WebClient client = WebClient.create(baseUrl + UrlParams.PERSON_URL);
 		
 		PersonSearchQueryResult personResponse = client.get()
 				.uri(factory -> factory.uriString("").queryParam("personUid", id).build())

@@ -14,7 +14,7 @@
         {
           "projectionResultCoverCqCollection": [
             {
-              "currentBenefit": 0,
+              "currentBenefit": 0.0,
               "projectionResultCoverBenefitCqCollection": [
                 {
                   "projectionAge": {
@@ -24,8 +24,8 @@
                     },
                     "date_": "2033-12-01"
                   },
-                  "benefit": 0,
-                  "benefitInflated": 0
+                  "benefit": 0.0,
+                  "benefitInflated": 0.0
                 }
               ],
               "policyCoverIdCq": {
@@ -200,12 +200,12 @@
               },
               "benefitPeriod": {
                 "value": 0,
-                "periodLength": "Y"
+                "periodLength": "M"
               },
               "insuranceTypeCq": "NUL"
             },
             {
-              "currentBenefit": 58753.86,
+              "currentBenefit": 4896.15,
               "projectionResultCoverBenefitCqCollection": [
                 {
                   "projectionAge": {
@@ -215,8 +215,8 @@
                     },
                     "date_": "2033-12-01"
                   },
-                  "benefit": 35200.54,
-                  "benefitInflated": 52676.47
+                  "benefit": 2933.37,
+                  "benefitInflated": 4389.7
                 }
               ],
               "policyCoverIdCq": {
@@ -391,7 +391,7 @@
               },
               "benefitPeriod": {
                 "value": 10,
-                "periodLength": "Y"
+                "periodLength": "M"
               },
               "insuranceTypeCq": "NUL"
             }
@@ -458,7 +458,7 @@
               "id": "2",
               "policyUid": "$Jc4YUNnGginzjMNv@Q",
               "eventTransUid": "$Jc4YUfnJI7AkANKrd1"
-            }
+        }
           }
         }
       ]

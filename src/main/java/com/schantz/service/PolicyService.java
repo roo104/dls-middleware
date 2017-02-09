@@ -19,6 +19,9 @@ import org.springframework.web.reactive.function.client.*;
 @Service
 public class PolicyService {
 	
+	@Value("${base-url}")
+	private String baseUrl;
+	
 	@Autowired
 	private UserService userService;
 	
@@ -27,7 +30,7 @@ public class PolicyService {
 		log.info("Getting policies for user {}", userId);
 		User user = userService.getUser(userId);
 		
-		WebClient client = WebClient.create(UrlParams.POLICY_SEARCH_URL);
+		WebClient client = WebClient.create(baseUrl + UrlParams.POLICY_SEARCH_URL);
 		
 		PolicySearchQueryResult policies = client.get()
 				.uri(factory -> factory.uriString("").queryParam("personRegistration", user.getSocialSecurityNumber()).build())
@@ -54,7 +57,7 @@ public class PolicyService {
 				.filter(policy -> policy.getId().equals(policyId))
 				.findFirst();
 		
-		WebClient client = WebClient.create(UrlParams.POLICY_URL);
+		WebClient client = WebClient.create(baseUrl + UrlParams.POLICY_URL);
 		
 		Policy policy = null;
 		if (policyOptional.isPresent()) {

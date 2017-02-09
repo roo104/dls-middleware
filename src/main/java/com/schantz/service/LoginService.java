@@ -14,6 +14,9 @@ import org.springframework.web.reactive.function.client.*;
 @Service
 public class LoginService {
 	
+	@Value("${base-url}")
+	private String baseUrl;
+	
 	@Autowired
 	private UserService userService;
 	
@@ -22,7 +25,7 @@ public class LoginService {
 		loginCommand.setUsername("admin@schantz.com");
 		loginCommand.setPwd("123");
 		
-		WebClient client = WebClient.create(UrlParams.LOGIN_URL);
+		WebClient client = WebClient.create(baseUrl + UrlParams.LOGIN_URL);
 		
 		LoginIdPairCommandResult loginIdPairCommandResult = client.post()
 				.uri("")

@@ -16,13 +16,16 @@ import org.springframework.web.reactive.function.client.*;
 @Service
 public class ContributionService {
 	
+	@Value("${base-url}")
+	private String baseUrl;
+	
 	@Autowired
 	private PolicyService policyService;
 	
 	public List<Contribution> getContribution(String userId, String policyId) {
 		Policy policy = policyService.getPolicy(userId, policyId);
 		
-		WebClient client = WebClient.create(UrlParams.CONTRIBUTION_URL);
+		WebClient client = WebClient.create(baseUrl + UrlParams.CONTRIBUTION_URL);
 		
 		ContributionInfoPolicyQueryResult queryResult = client.get()
 				.uri(factory -> factory.uriString("").pathSegment(policy.getEventTransId()).build())

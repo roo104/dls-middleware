@@ -1,0 +1,38 @@
+{
+  "entryCollection": [
+    {
+      "phoneNumber": "22 33 44 55 ",
+      "addressCq": {
+        "zipCode": "2300",
+        "zipCodeDescription": "København S",
+        "addressTypeCq": "P",
+        "countryIso3Cq": "DNK",
+        "streetName": "Korsbæk Hovedvej",
+        "streetNo": "75"
+      },
+      "personId": {
+        "uniqueId": "$Jc4YUN$GMApLwpUcTj",
+        "registration": "021166-0000",
+        "name": "Maude Varnæs",
+        "personName": {
+          "salutation": "",
+          "firstName": "Maude",
+          "middleName": "",
+          "lastName": "Varnæs"
+        }
+      },
+      "name": {
+        "salutation": "",
+        "firstName": "Maude",
+        "middleName": "",
+        "lastName": "Varnæs"
+      }
+    }
+  ],
+  "sortOrderCq": "A",
+  "pagingInfoCq": {
+    "firstEntryOnPage": 0,
+    "entriesOnPage": 20,
+    "totalNoOfEntries": 1
+  }
+}
